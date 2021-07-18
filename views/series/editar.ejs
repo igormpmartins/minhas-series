@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Séries</h2>
+            <p class="lead">Editar Série</p>
+            <form method="POST">
+                <div class="form-group">
+                  <label for="seriesName">Nome da Série</label>
+                  <input type="text" class="form-control" value="<%=serie.name%>" name="name" id="seriesName" aria-describedby="nameHelp" placeholder="Informe o nome da série">
+                  <small id="nameHelp" class="form-text text-muted">Nome da série que será cadastrada</small>
+                  <% if (locals.errors && locals.errors.indexOf('name') >=0) { %>
+                    <small id="nameHelp" class="form-text text-muted">Informe o nome da série</small>
+                  <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="statusId">Example select</label>
+                    <select class="form-control" name="status" id="statusId"  value="<%=serie.status%>" >
+                        <%labels.forEach(label => {%>
+                            <option value="<%=label.id%>" <% if (label.id === serie.status) {%>selected="selected" <% } %>><%=label.name%></option>
+                        <%})%>
+                    </select>
+                  </div>                
+                <button class="btn btn-primary">Salvar</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <%- include('../partials/footer') %>
